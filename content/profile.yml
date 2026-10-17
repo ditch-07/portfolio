@@ -4,17 +4,17 @@ about:
     - type: cmd
       text: whoami
     - type: out
-      text: Menelisi Moyo - Hobbyst Software Engineer
+      text: Menelisi Moyo - Software Developer
     - type: cmd
       text: cat focus.txt
     - type: out
-      text: Full-Stack Developer specializing in Python (Django/DRF) backends and Nuxt PWA frontends
+      text: 'Django systems · backend development · REST APIs · Django templates '
     - type: cmd
       text: miscellaneous
     - type: out
-      text: 'FPV Drones are awesome '
+      text: FPV Drones are awesome <3
 name: Menelisi Moyo
-role: Django Developer
+role: Software Developer
 socials:
   - name: Gmail
     url: menelisim421@gmail.com
