@@ -8,7 +8,7 @@ about:
     - type: cmd
       text: cat focus.txt
     - type: out
-      text: Django Framework. · Django REST APIs · Nuxt PWAs
+      text: Full-Stack Developer specializing in Python (Django/DRF) backends and Nuxt PWA frontends
     - type: cmd
       text: miscellaneous
     - type: out
