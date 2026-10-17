@@ -1,7 +1,7 @@
 ---
 title: Why dark themes deserve better contrast
+date: '2026-10-10'
 description: Off-white on charcoal is not just an aesthetic choice — it is a legibility one.
-date: 2026-10-10
 ---
 
 Dark interfaces are often treated as a palette swap: take the light theme, invert the background, ship it. The result usually looks fine on the designer's display and turns to mush everywhere else.
