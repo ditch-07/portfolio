@@ -43,7 +43,7 @@ export default defineContentConfig({
         category: z.string(),
         description: z.string(),
         year: z.string(),
-        order: z.number().int().describe('Position in the carousel (lowest first)'),
+        order: z.string().describe('Position in the carousel (lowest first)'),
       }),
     }),
     music: defineCollection({
@@ -52,7 +52,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         artist: z.string(),
-        order: z.number().int().describe('Position in the list (lowest first)'),
+        order: z.string().describe('Position in the list (lowest first)'),
       }),
     }),
   },

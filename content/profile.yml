@@ -1,5 +1,3 @@
-name: Your Name
-role: Developer & Designer
 about:
   filename: about_me.md
   lines:
@@ -15,6 +13,8 @@ about:
       text: now building
     - type: out
       text: Nuxt, design systems, audio-reactive visuals
+name: Your Name
+role: Developer & Designer
 socials:
   - name: GitHub
     url: https://github.com

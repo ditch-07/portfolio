@@ -1,5 +1,5 @@
 title: Net Worker
 category: LIBRARY
 description: Typed WebSocket client with automatic reconnect.
-year: "2024"
-order: 4
+order: '4'
+year: '2024'
