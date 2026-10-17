@@ -7,8 +7,8 @@ const aboutLine = z.object({
 
 const social = z.object({
   name: z.string(),
-  url: z.string(),
-  icon: z.enum(['github', 'twitter', 'linkedin', 'youtube']),
+  url: z.string().describe('Use mailto:you@gmail.com, https://t.me/username, https://wa.me/countrycodenumber, https://x.com/username'),
+  icon: z.enum(['gmail', 'telegram', 'whatsapp', 'x']),
 })
 
 export default defineContentConfig({

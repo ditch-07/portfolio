@@ -2,9 +2,9 @@
   <div class="blog">
     <span v-reveal class="section-label">Blog</span>
     <div
-      v-for="(post, i) in posts"
+      v-for="(post, i) in visiblePosts"
       :key="post.path"
-      v-reveal="{ delay: i * 120 }"
+      v-reveal="{ delay: (i % PAGE_SIZE) * 120 }"
       class="blog__item"
     >
       <NuxtLink :to="post.path" class="blog__post">
@@ -18,14 +18,34 @@
         </footer>
       </NuxtLink>
     </div>
+
+    <div v-if="hasMore" v-reveal class="blog__more-wrap">
+      <button type="button" class="blog__more" @click="loadMore">
+        Load more
+        <span aria-hidden="true">↓</span>
+      </button>
+    </div>
+
+    <p v-else-if="posts.length > PAGE_SIZE" v-reveal class="blog__end">
+      That’s everything for now
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 useHead({ title: 'Blog — Portfolio' })
 
+const PAGE_SIZE = 4
+
 const { data } = await usePortfolioPosts()
 const posts = computed(() => data.value ?? [])
+const visibleCount = ref(PAGE_SIZE)
+const visiblePosts = computed(() => posts.value.slice(0, visibleCount.value))
+const hasMore = computed(() => visibleCount.value < posts.value.length)
+
+function loadMore() {
+  visibleCount.value += PAGE_SIZE
+}
 </script>
 
 <style scoped>
@@ -125,5 +145,58 @@ const posts = computed(() => data.value ?? [])
 .blog__post:hover .blog__read span {
   color: var(--accent-soft);
   transform: translate(2px, -2px);
+}
+
+.blog__more-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.blog__more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: 0 var(--sp-3);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--dur-fast) ease;
+}
+
+.blog__more span {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.blog__more:hover {
+  color: var(--accent-soft);
+}
+
+.blog__more:hover span {
+  transform: translateY(var(--sp-1));
+}
+
+.blog__more:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: var(--sp-1);
+}
+
+.blog__end {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.6;
 }
 </style>

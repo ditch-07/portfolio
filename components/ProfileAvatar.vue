@@ -1,8 +1,8 @@
 <template>
   <div class="avatar" role="img" aria-label="Profile picture">
     <img
-      src="/images/avatar-256.webp"
-      srcset="/images/avatar-256.webp 256w, /images/avatar-384.webp 384w"
+      src="/images/denji-256.webp"
+      srcset="/images/denji-256.webp 256w, /images/denji-384.webp 384w"
       sizes="128px"
       width="256"
       height="256"

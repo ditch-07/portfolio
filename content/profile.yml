@@ -16,15 +16,15 @@ about:
 name: Your Name
 role: Developer & Designer
 socials:
-  - name: GitHub
-    url: https://github.com
-    icon: github
-  - name: X / Twitter
-    url: https://x.com
-    icon: twitter
-  - name: LinkedIn
-    url: https://linkedin.com
-    icon: linkedin
-  - name: YouTube
-    url: https://youtube.com
-    icon: youtube
+  - name: Gmail
+    url: mailto:you@gmail.com
+    icon: gmail
+  - name: Telegram
+    url: https://t.me/username
+    icon: telegram
+  - name: WhatsApp
+    url: https://wa.me/15551234567
+    icon: whatsapp
+  - name: X
+    url: https://x.com/username
+    icon: x

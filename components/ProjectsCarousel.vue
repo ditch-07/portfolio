@@ -2,7 +2,13 @@
   <section class="projects" aria-label="Recent projects">
     <span v-reveal class="section-label">Recent Projects</span>
 
-    <div ref="viewport" class="projects__viewport">
+    <div
+      ref="viewport"
+      class="projects__viewport"
+      @touchstart.passive="onTouchStart"
+      @touchend="onTouchEnd"
+      @wheel="onWheel"
+    >
       <div ref="track" class="projects__track" :style="{ transform: `translateX(${offset}px)` }">
         <div
           v-for="(p, i) in projects"
@@ -65,6 +71,52 @@ function go(i: number) {
   centerProject()
 }
 
+function step(delta: number) {
+  const next = page.value + delta
+  if (next < 0 || next >= projects.value.length) return
+  go(next)
+}
+
+let wheelDelta = 0
+let wheelReset: ReturnType<typeof setTimeout> | undefined
+let wheelLockedUntil = 0
+
+function onWheel(event: WheelEvent) {
+  if (Math.abs(event.deltaX) <= Math.abs(event.deltaY)) return
+  event.preventDefault()
+  if (Date.now() < wheelLockedUntil) return
+
+  wheelDelta += event.deltaX
+  clearTimeout(wheelReset)
+  wheelReset = setTimeout(() => {
+    wheelDelta = 0
+  }, 160)
+
+  if (Math.abs(wheelDelta) < 30) return
+  const direction = wheelDelta > 0 ? 1 : -1
+  wheelDelta = 0
+  wheelLockedUntil = Date.now() + 320
+  step(direction)
+}
+
+let touchOrigin: { x: number; y: number } | null = null
+
+function onTouchStart(event: TouchEvent) {
+  touchOrigin = event.touches.length === 1
+    ? { x: event.touches[0].clientX, y: event.touches[0].clientY }
+    : null
+}
+
+function onTouchEnd(event: TouchEvent) {
+  if (!touchOrigin) return
+  const touch = event.changedTouches[0]
+  const dx = touch.clientX - touchOrigin.x
+  const dy = touch.clientY - touchOrigin.y
+  touchOrigin = null
+  if (Math.abs(dx) < 48 || Math.abs(dx) < Math.abs(dy) * 1.2) return
+  step(dx < 0 ? 1 : -1)
+}
+
 onMounted(() => {
   centerProject()
   resizeObserver = new ResizeObserver(centerProject)
@@ -73,6 +125,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   resizeObserver?.disconnect()
+  clearTimeout(wheelReset)
 })
 </script>
 
@@ -88,6 +141,7 @@ onBeforeUnmount(() => {
 .projects__viewport {
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y;
 }
 
 .projects__track {
