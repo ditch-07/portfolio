@@ -1,34 +1,43 @@
-export function usePortfolio() {
-  const profile = {
-    name: 'Your Name',
-    role: 'Developer & Designer',
-  }
+export function usePortfolioProfile() {
+  return useAsyncData('portfolio-profile', () => queryCollection('profile').first())
+}
 
-  const socials = [
-    { name: 'GitHub', url: 'https://github.com', icon: 'github' },
-    { name: 'X / Twitter', url: 'https://x.com', icon: 'twitter' },
-    { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'linkedin' },
-    { name: 'YouTube', url: 'https://youtube.com', icon: 'youtube' },
-  ]
+// Separate key from usePortfolioProfile: awaiting the shared key inside
+// page Suspense while app.vue already fetches it deadlocks SSR.
+export function usePortfolioAbout() {
+  return useAsyncData('portfolio-about', () => queryCollection('profile').first())
+}
 
-  const about = {
-    filename: 'about_me.md',
-    lines: [
-      { type: 'cmd', text: 'whoami' },
-      { type: 'out', text: 'Your Name — developer & designer' },
-      { type: 'cmd', text: 'cat focus.txt' },
-      { type: 'out', text: 'clean interfaces · dark themes · shipping fast' },
-      { type: 'cmd', text: 'now building' },
-      { type: 'out', text: 'Nuxt, design systems, audio-reactive visuals' },
-    ],
-  }
+export function usePortfolioProjects() {
+  return useAsyncData('portfolio-projects', () =>
+    queryCollection('projects').order('order', 'ASC').all(),
+  )
+}
 
-  const projects = [
-    { title: 'Midnight Oil', category: 'AUDIO TOOL', description: 'A tiny browser synth with tape-saturated presets.', year: '2026' },
-    { title: 'Black Pearl', category: 'CLI', description: 'Terminal dashboard for watching deploy pipelines.', year: '2025' },
-    { title: 'Glucophobia', category: 'GAME', description: 'A sugar-rush arcade game built with Vue and canvas.', year: '2025' },
-    { title: 'Net Worker', category: 'LIBRARY', description: 'Typed WebSocket client with automatic reconnect.', year: '2024' },
-  ]
+export function usePortfolioTracks() {
+  return useAsyncData('portfolio-tracks', () =>
+    queryCollection('music').order('order', 'ASC').all(),
+  )
+}
 
-  return { profile, socials, about, projects }
+export function usePortfolioPosts() {
+  return useAsyncData('portfolio-posts', () =>
+    queryCollection('blog').order('date', 'DESC').all(),
+  )
+}
+
+export function usePortfolioPost(path: string) {
+  return useAsyncData(`portfolio-post-${path}`, () =>
+    queryCollection('blog').path(path).first(),
+  )
+}
+
+export function formatPostDate(date: string) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+    .format(new Date(date))
+    .toUpperCase()
 }

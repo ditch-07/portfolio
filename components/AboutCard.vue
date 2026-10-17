@@ -26,23 +26,24 @@
 </template>
 
 <script setup lang="ts">
-const { about } = usePortfolio()
+const { data: profile } = await usePortfolioAbout()
+const about = computed(() => profile.value?.about ?? { filename: 'about_me.md', lines: [] })
 
 const SPEED = 26
 const LINE_PAUSE = 460
 const START_DELAY = 500
 
-const display = ref(about.lines.map(() => ''))
+const display = ref(about.value.lines.map(() => ''))
 const active = ref(0)
 const finished = ref(false)
 let timer: ReturnType<typeof setTimeout> | undefined
 
 function type() {
-  if (active.value >= about.lines.length) {
+  if (active.value >= about.value.lines.length) {
     finished.value = true
     return
   }
-  const target = about.lines[active.value].text
+  const target = about.value.lines[active.value].text
   const shown = display.value[active.value]
   if (shown.length < target.length) {
     display.value[active.value] = target.slice(0, shown.length + 1)
@@ -60,8 +61,8 @@ function startTyping() {
   if (started) return
   started = true
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    display.value = about.lines.map(line => line.text)
-    active.value = about.lines.length
+    display.value = about.value.lines.map(line => line.text)
+    active.value = about.value.lines.length
     finished.value = true
     return
   }

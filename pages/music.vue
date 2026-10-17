@@ -14,13 +14,8 @@
 <script setup lang="ts">
 useHead({ title: 'Music Taste — Portfolio' })
 
-const tracks = [
-  { title: 'Midnight City', artist: 'M83' },
-  { title: 'Teardrop', artist: 'Massive Attack' },
-  { title: 'Nightcall', artist: 'Kavinsky' },
-  { title: 'Sunset Lover', artist: 'Petit Biscuit' },
-  { title: 'Breathe', artist: 'Télépopmusik' },
-]
+const { data } = await usePortfolioTracks()
+const tracks = computed(() => data.value ?? [])
 </script>
 
 <style scoped>

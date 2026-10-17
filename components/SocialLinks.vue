@@ -21,7 +21,8 @@
 </template>
 
 <script setup lang="ts">
-const { socials } = usePortfolio()
+const { data: profile } = usePortfolioProfile()
+const socials = computed(() => profile.value?.socials ?? [])
 </script>
 
 <style scoped>

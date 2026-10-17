@@ -7,13 +7,13 @@
       </div>
     </main>
     <footer class="shell__footer container">
-      <span>{{ profile.name }} — built with Nuxt</span>
+      <span>{{ profile?.name }} — built with Nuxt</span>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-const { profile } = usePortfolio()
+const { data: profile } = usePortfolioProfile()
 </script>
 
 <style scoped>

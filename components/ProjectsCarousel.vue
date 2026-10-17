@@ -41,7 +41,8 @@
 </template>
 
 <script setup lang="ts">
-const { projects } = usePortfolio()
+const { data } = await usePortfolioProjects()
+const projects = computed(() => data.value ?? [])
 
 const viewport = ref<HTMLElement | null>(null)
 const track = ref<HTMLElement | null>(null)

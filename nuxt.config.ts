@@ -1,7 +1,20 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   nitro: { compressPublicAssets: true },
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', 'nuxt-studio'],
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'ditch-07',
+      repo: 'portfolio',
+      branch: 'main',
+    },
+  },
+  content: {
+    experimental: {
+      sqliteConnector: 'native',
+    },
+  },
   css: [
     '@fontsource/space-grotesk/latin-600.css',
     '@fontsource/space-grotesk/latin-700.css',
