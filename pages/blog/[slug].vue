@@ -13,6 +13,8 @@
     <div v-reveal="{ delay: 160 }" class="post__body">
       <ContentRenderer :value="post" />
     </div>
+
+    <BackToTop />
   </article>
 </template>
 

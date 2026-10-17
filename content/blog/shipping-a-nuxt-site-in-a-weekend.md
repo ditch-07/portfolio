@@ -1,7 +1,7 @@
 ---
 title: Shipping a Nuxt site in a weekend
+date: '2026-09-22'
 description: What I kept, what I cut, and what surprised me about file-based routing.
-date: 2026-09-22
 ---
 
 The brief was simple: a personal site that loads fast, feels alive, and does not turn into a second job. I gave myself a weekend. Here is the short version.
