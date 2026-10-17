@@ -4,26 +4,26 @@ about:
     - type: cmd
       text: whoami
     - type: out
-      text: Your Name — developer & designer
+      text: Menelisi Moyo - Hobbyst Software Engineer
     - type: cmd
       text: cat focus.txt
     - type: out
-      text: clean interfaces · dark themes · shipping fast
+      text: 'Django systems · backend development · REST APIs · Django templates '
     - type: cmd
-      text: now building
+      text: miscellaneous
     - type: out
-      text: Nuxt, design systems, audio-reactive visuals
-name: Your Name
-role: Developer & Designer
+      text: 'FPV Drones are awesome '
+name: Menelisi Moyo
+role: Django Developer
 socials:
   - name: Gmail
-    url: mailto:you@gmail.com
+    url: menelisim421@gmail.com
     icon: gmail
   - name: Telegram
-    url: https://t.me/username
+    url: https://t.me/digitalbushman
     icon: telegram
   - name: WhatsApp
-    url: https://wa.me/15551234567
+    url: https://wa.me/263713009826
     icon: whatsapp
   - name: X
     url: https://x.com/username
