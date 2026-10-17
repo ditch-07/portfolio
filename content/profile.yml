@@ -4,15 +4,15 @@ about:
     - type: cmd
       text: whoami
     - type: out
-      text: Your Name — developer & designer
+      text: Menelisi Moyo - systems developer.. self proclaimed. Particulary django  .... its always django .Beyond that electrical engineering student. ps fascinated by FPV Drones
     - type: cmd
       text: cat focus.txt
     - type: out
-      text: clean interfaces · dark themes · shipping fast
+      text: 'django , fpv drones , Blogging .. Check out my Blog : )'
     - type: cmd
       text: now building
     - type: out
-      text: Nuxt, design systems, audio-reactive visuals
+      text: 'Bsoft for schools . Bsoft  for POS '
 name: Your Name
 role: Developer & Designer
 socials:
