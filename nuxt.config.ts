@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
   nitro: { compressPublicAssets: true },
+  modules: ['@nuxt/content'],
   css: [
     '@fontsource/space-grotesk/latin-600.css',
     '@fontsource/space-grotesk/latin-700.css',
