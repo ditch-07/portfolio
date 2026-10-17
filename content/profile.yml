@@ -8,7 +8,7 @@ about:
     - type: cmd
       text: cat focus.txt
     - type: out
-      text: 'Django systems · backend development · REST APIs · Django templates '
+      text: Django Framework. · Django REST APIs · Nuxt PWAs
     - type: cmd
       text: miscellaneous
     - type: out
