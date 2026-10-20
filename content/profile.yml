@@ -4,26 +4,26 @@ about:
     - type: cmd
       text: whoami
     - type: out
-      text: Your Name — developer & designer
+      text: Menelisi Moyo - Software Developer
     - type: cmd
       text: cat focus.txt
     - type: out
-      text: clean interfaces · dark themes · shipping fast
+      text: Full-Stack Developer specializing in Python (Django/DRF) backends and Nuxt PWA frontends
     - type: cmd
-      text: now building
+      text: miscellaneous
     - type: out
-      text: Nuxt, design systems, audio-reactive visuals
-name: Your Name
-role: Developer & Designer
+      text: FPV Drones are awesome <3
+name: Menelisi Moyo
+role: Software Developer
 socials:
   - name: Gmail
-    url: mailto:you@gmail.com
+    url: mailto:menelisim421@gmail.com
     icon: gmail
   - name: Telegram
-    url: https://t.me/username
+    url: https://t.me/digitalbushman
     icon: telegram
   - name: WhatsApp
-    url: https://wa.me/15551234567
+    url: https://wa.me/263713009826
     icon: whatsapp
   - name: X
     url: https://x.com/username
