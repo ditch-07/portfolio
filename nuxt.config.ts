@@ -32,7 +32,7 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Personal portfolio — projects, writing, and music taste.' },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: 'images/favicon.png', sizes: '96x96' }
+        { rel: 'icon', type: 'image/png', href: '/images/favicon.png', sizes: '96x96' }
       ],
     },
   },
