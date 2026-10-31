@@ -44,15 +44,6 @@ export default defineContentConfig({
         description: z.string(),
         year: z.string(),
         order: z.string().describe('Position in the carousel (lowest first)'),
-        image: z
-          .string()
-          .optional()
-          .describe('Thumbnail from the media library (SVG, PNG or JPG). Falls back to the first letter of the title when empty.')
-          .editor({ input: 'media' }),
-        link: z
-          .string()
-          .optional()
-          .describe('Where the card links to — https://… for an external site, or /path for a page of this site.'),
       }),
     }),
     music: defineCollection({
