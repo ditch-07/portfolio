@@ -31,6 +31,9 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Personal portfolio — projects, writing, and music taste.' },
       ],
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/images/favicon.png', sizes: '96x96' }
+      ],
     },
   },
 })

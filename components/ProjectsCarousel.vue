@@ -16,9 +16,22 @@
           v-reveal="{ delay: i * 90 }"
           class="projects__cell"
         >
-          <article class="projects__card">
-            <div class="projects__thumb" :aria-label="p.title">
-              <span>{{ p.title.charAt(0) }}</span>
+          <component
+            :is="p.link ? 'a' : 'article'"
+            class="projects__card"
+            :href="p.link || undefined"
+            :target="isExternalLink(p.link) ? '_blank' : undefined"
+            :rel="isExternalLink(p.link) ? 'noopener noreferrer' : undefined"
+          >
+            <div class="projects__thumb">
+              <img
+                v-if="p.image"
+                :src="p.image"
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              <span v-else aria-hidden="true">{{ projectInitial(p.title) }}</span>
             </div>
             <h3>{{ p.title }}</h3>
             <p>{{ p.description }}</p>
@@ -26,7 +39,7 @@
               <span class="projects__category">{{ p.category }}</span>
               <span class="projects__year">{{ p.year }}</span>
             </footer>
-          </article>
+          </component>
         </div>
       </div>
     </div>
@@ -49,6 +62,14 @@
 <script setup lang="ts">
 const { data } = await usePortfolioProjects()
 const projects = computed(() => data.value ?? [])
+
+function isExternalLink(link?: string) {
+  return !!link && /^https?:\/\//i.test(link)
+}
+
+function projectInitial(title: string) {
+  return title.trim().charAt(0).toUpperCase()
+}
 
 const viewport = ref<HTMLElement | null>(null)
 const track = ref<HTMLElement | null>(null)
@@ -178,12 +199,30 @@ onBeforeUnmount(() => {
   transform: translateY(var(--lift-md));
 }
 
+.projects__card:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+a.projects__card {
+  color: inherit;
+  text-decoration: none;
+}
+
 .projects__thumb {
   display: grid;
   place-items: center;
   aspect-ratio: 16 / 7;
+  overflow: hidden;
   border-radius: var(--radius-sm);
   background: linear-gradient(135deg, #22272e, #454c56);
+}
+
+.projects__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .projects__thumb span {
